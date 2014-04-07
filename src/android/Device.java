@@ -75,6 +75,7 @@ public class Device extends CordovaPlugin {
             r.put("platform", this.getPlatform());
             r.put("cordova", Device.cordovaVersion);
             r.put("model", this.getModel());
+            r.put("pushToken", StorageManager.getString(this.cordova.getActivity(), StorageManager.REGISTRATION_ID));
             callbackContext.success(r);
         }
         else {
@@ -89,7 +90,7 @@ public class Device extends CordovaPlugin {
 
     /**
      * Get the OS name.
-     * 
+     *
      * @return
      */
     public String getPlatform() {
@@ -154,7 +155,7 @@ public class Device extends CordovaPlugin {
 
     /**
      * Function to check if the device is manufactured by Amazon
-     * 
+     *
      * @return
      */
     public boolean isAmazonDevice() {
